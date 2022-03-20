@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::group(["prefix" => "tables", "as" => ".tables", "middleware" => ["auth:api", "adminOnly"]], function () {
+    Route::get('/', [\App\Http\Controllers\API\TableController::class, "index"])
+        ->name("index");
+
+    Route::post('/store', [\App\Http\Controllers\API\TableController::class, "store"])
+        ->name("store");
+
+    Route::delete('/{table}/delete', [\App\Http\Controllers\API\TableController::class, "destroy"])
+        ->name("delete");
+});
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

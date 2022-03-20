@@ -13,7 +13,7 @@ class Table extends Model
 
     protected $guarded = [];
 
-    public function typeType(): BelongsTo
+    public function tableType(): BelongsTo
     {
         return $this->belongsTo(TableType::class);
     }

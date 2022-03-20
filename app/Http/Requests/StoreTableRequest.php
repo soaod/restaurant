@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreTableRequest extends FormRequest
 {
@@ -11,9 +12,9 @@ class StoreTableRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +22,11 @@ class StoreTableRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'number' => ['required', 'digits_between:1,10'],
+            'type' => ['required', Rule::exists('table_types', 'id')]
         ];
     }
 }

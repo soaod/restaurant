@@ -24,10 +24,12 @@ class AdminMiddleware
                 return \response()->json([
                     'status' => "error",
                     'message' => "Unauthorized Access"
-                ]);
+                ], 403);
             }
         } else {
-            abort(403, "Unauthorized Access");
+            if ( $request->user()->role->id != 1 ) {
+                abort(403, "Unauthorized Access");
+            }
         }
         return $next($request);
     }
