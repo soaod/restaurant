@@ -1,0 +1,38 @@
+models:
+    Setting:
+        id: bigInteger primary
+        open_at: timestamp
+        close_at: timestamp
+    TableType:
+        id: bigInteger primary
+        type_name: string
+        seats: smallInteger
+        isActive: boolean
+    Table:
+        id: bigInteger primary
+        number: smallInteger
+        table_type_id: bigInteger index
+        isActive: boolean
+    Customer:
+        id: bigInteger primary
+        name: string
+        phone: string unique
+    Reservation:
+        id: bigInteger primary
+        table_id: bigInteger index
+        customer_id: bigInteger index
+        date: date
+        from: timestamp
+        to: timestamp
+        total_people: smallInteger
+        user_id: bigInteger index
+    Role:
+        id: bigInteger primary
+        name: string
+        isActive: boolean
+    User:
+        id: bigInteger primary
+        role_id: bigInteger index
+        name: string
+        phone: string unique
+        isActive: boolean
