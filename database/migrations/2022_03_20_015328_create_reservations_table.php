@@ -28,10 +28,10 @@ return new class extends Migration
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->date("date");
-            $table->timestamp("from");
-            $table->timestamp("to");
+            $table->time("from");
+            $table->time("to");
             $table->unsignedSmallInteger("total_people")->default(1);
-            $table->string("isActive")->default(1);
+            $table->boolean("isActive")->default(1);
             $table->timestamps();
         });
     }

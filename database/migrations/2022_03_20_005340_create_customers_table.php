@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("name");
             $table->string("phone", 30)->unique();
-            $table->string("isActive")->default(1);
+            $table->boolean("isActive")->default(1);
             $table->timestamps();
         });
     }

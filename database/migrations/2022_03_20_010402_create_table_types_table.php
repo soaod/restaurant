@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tables', function (Blueprint $table) {
+        Schema::create('table_types', function (Blueprint $table) {
             $table->id();
-            $table->unsignedSmallInteger("number");
-            $table->foreignId("table_type_id")
-                ->constrained()
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-            $table->string("isActive")->default(1);
+            $table->string("type");
+            $table->unsignedSmallInteger("seats")->default(1);
+            $table->boolean("isActive")->default(1);
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tables');
+        Schema::dropIfExists('table_types');
     }
 };
