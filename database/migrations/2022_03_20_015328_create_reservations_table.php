@@ -15,6 +15,23 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("table_id")
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->foreignId("customer_id")
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->foreignId("user_id")
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->date("date");
+            $table->timestamp("from");
+            $table->timestamp("to");
+            $table->unsignedSmallInteger("total_people")->default(1);
+            $table->string("isActive")->default(1);
             $table->timestamps();
         });
     }

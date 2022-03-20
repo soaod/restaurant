@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('restaurant_settings', function (Blueprint $table) {
             $table->id();
+            $table->timestamp("open_at");
+            $table->timestamp("close_at");
             $table->timestamps();
         });
     }

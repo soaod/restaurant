@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('table_types', function (Blueprint $table) {
             $table->id();
+            $table->string("type");
+            $table->unsignedSmallInteger("seats")->default(1);
+            $table->string("isActive")->default(1);
             $table->timestamps();
         });
     }

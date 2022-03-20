@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('tables', function (Blueprint $table) {
             $table->id();
+            $table->unsignedSmallInteger("number");
+            $table->foreignId("table_type_id")
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->string("isActive")->default(1);
             $table->timestamps();
         });
     }
