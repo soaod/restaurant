@@ -17,7 +17,7 @@ class TableTypeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'isActive' => 1
         ];
     }
 }

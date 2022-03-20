@@ -17,7 +17,9 @@ class CustomerFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name(gender: "male"),
+            'phone' => $this->faker->unique()->phoneNumber(),
+            'isActive' => 1,
         ];
     }
 }
