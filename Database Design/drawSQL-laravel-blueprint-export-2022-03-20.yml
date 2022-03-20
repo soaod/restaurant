@@ -36,3 +36,4 @@ models:
         name: string
         phone: string unique
         isActive: boolean
+        employee_number: smallInteger
