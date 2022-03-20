@@ -28,6 +28,6 @@ class TableRepository extends BaseRepository
             'table_type_id' => $data['type']
         ];
 
-        return $this->create($data);
+        return $this->create($creationData);
     }
 }

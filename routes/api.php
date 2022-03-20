@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('login', [\App\Http\Controllers\API\AuthController::class, "login"]);
+
+
 Route::group(["prefix" => "tables", "as" => ".tables", "middleware" => ["auth:api", "adminOnly"]], function () {
     Route::get('/', [\App\Http\Controllers\API\TableController::class, "index"])
         ->name("index");

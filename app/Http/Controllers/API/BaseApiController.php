@@ -22,6 +22,7 @@ class BaseApiController extends Controller
         if ($this->response["status"] == "") {
             $this->response["status"] = "success";
         }
+        $this->response["code"] = $code;
         return response()->json($this->response, $code);
     }
 
@@ -37,6 +38,7 @@ class BaseApiController extends Controller
         if ($this->response["status"] == "") {
             $this->response["status"] = "error";
         }
+        $this->response["code"] = $code;
         return response()->json($this->response, $code);
     }
 
@@ -52,6 +54,7 @@ class BaseApiController extends Controller
         if ($this->response["status"] == "") {
             $this->response["status"] = "error";
         }
+        $this->response["code"] = $code;
         return response()->json($this->response, $code);
     }
 
@@ -68,6 +71,7 @@ class BaseApiController extends Controller
         if ($this->response["status"] == "") {
             $this->response["status"] = "error";
         }
+        $this->response["code"] = $code;
         return response()->json($this->response, $code);
     }
 
@@ -83,6 +87,7 @@ class BaseApiController extends Controller
         if ($this->response["status"] == "") {
             $this->response["status"] = "error";
         }
+        $this->response["code"] = $code;
         return response()->json($this->response, $code);
     }
 
@@ -98,6 +103,7 @@ class BaseApiController extends Controller
         if ($this->response["status"] == "") {
             $this->response["status"] = "error";
         }
+        $this->response["code"] = $code;
         return response()->json($this->response, $code);
     }
 
@@ -113,6 +119,7 @@ class BaseApiController extends Controller
         if ($this->response["status"] == "") {
             $this->response["status"] = "error";
         }
+        $this->response["code"] = $code;
         return response()->json($this->response, $code);
     }
 }

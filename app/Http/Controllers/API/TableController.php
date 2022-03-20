@@ -6,6 +6,8 @@ use App\Http\Requests\StoreTableRequest;
 use App\Http\Resources\Table\TableResource;
 use App\Models\Table;
 use App\Repositories\TableRepository;
+use Error;
+use Exception;
 use Illuminate\Http\JsonResponse;
 
 class TableController extends BaseApiController
@@ -40,9 +42,14 @@ class TableController extends BaseApiController
      */
     public function store(StoreTableRequest $request): JsonResponse
     {
-        $validated = $request->validated();
-        $this->response['table'] = new TableResource($this->tableRepository->customCreate($validated));
-        return $this->successResponse();
+        try {
+            $validated = $request->validated();
+            $this->response['message'] = "Table Was Added Successfully";
+            $this->response['table'] = new TableResource($this->tableRepository->customCreate($validated));
+            return $this->successResponse();
+        } catch (Exception | Error $exception) {
+            return $this->internalErrorResponse();
+        }
     }
 
     /**
@@ -53,8 +60,17 @@ class TableController extends BaseApiController
      */
     public function destroy(Table $table): JsonResponse
     {
-        $this->tableRepository->deleteById($table->id);
-        $this->response['message'] = "Table Deleted Successfully";
-        return $this->successResponse(201);
+        try {
+            if ($table->reservations()->count() > 0) {
+                $this->response['message'] = "Table With Reservations Can Not Be Deleted.";
+                return $this->badRequestResponse();
+            }
+
+            $this->tableRepository->deleteById($table->id);
+            $this->response['message'] = "Table Deleted Successfully";
+            return $this->successResponse();
+        } catch (Exception | Error $exception) {
+            return $this->internalErrorResponse();
+        }
     }
 }
