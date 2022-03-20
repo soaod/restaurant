@@ -18,7 +18,7 @@ class CustomerFactory extends Factory
     {
         return [
             'name' => $this->faker->name(gender: "male"),
-            'phone' => $this->faker->unique()->phoneNumber(),
+            'phone' => $this->faker->unique()->e164PhoneNumber(),
             'isActive' => 1,
         ];
     }

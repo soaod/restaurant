@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->unsignedSmallInteger('employee_number')->unique();
+            $table->unsignedInteger('employee_number')->unique();
             $table->foreignId('role_id')
                 ->constrained()
                 ->cascadeOnUpdate()

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Customer;
+use App\Models\RestaurantSetting;
 use App\Models\Role;
 use App\Models\Table;
 use App\Models\TableType;
@@ -75,5 +76,10 @@ class DatabaseSeeder extends Seeder
         }
 
         Customer::factory()->count(10)->create();
+
+        RestaurantSetting::create([
+            "open_at" => "12:00",
+            "close_at" => "11:59"
+        ]);
     }
 }
