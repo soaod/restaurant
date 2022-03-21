@@ -12,11 +12,6 @@ class TableRepository extends BaseRepository
         parent::__construct((new Table()));
     }
 
-    public function pagination(int $length = 10)
-    {
-        return $this->model->paginate($length);
-    }
-
     /**
      * @param array $data
      * @return Model

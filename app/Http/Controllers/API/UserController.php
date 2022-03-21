@@ -2,84 +2,62 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Resources\User\UserResource;
+use App\Repositories\UserRepository;
+use Error;
+use Exception;
+use Illuminate\Http\JsonResponse;
 
 class UserController extends BaseApiController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    private UserRepository $userRepository;
+
+    public function __construct(UserRepository $userRepository)
     {
-        //
+        $this->userRepository = $userRepository;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function create()
+    public function index(): JsonResponse
     {
-        //
+        try {
+
+            $users = $this->userRepository->pagination();
+            $this->response['users'] = UserResource::collection($users);
+            $this->response['total'] = $users->total();
+            $this->response['currentPage'] = $users->currentPage();
+            $this->response['lastPage'] = $users->lastPage();
+
+            return $this->successResponse();
+
+        } catch (Exception | Error $exception) {
+            return $this->internalErrorResponse();
+        }
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param StoreUserRequest $request
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request): JsonResponse
     {
-        //
-    }
+        try {
+            $validated = $request->validated();
+            $this->response['user'] = new UserResource($this->userRepository->customCreate($validated));
+            $this->response['message'] = "User Was Added Successfully";
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\User $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        //
-    }
+            return $this->successResponse();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\User $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\User $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\User $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
-    {
-        //
+        } catch (Exception | Error $exception) {
+            $this->response['message'] = $exception->getMessage();
+            return $this->internalErrorResponse();
+        }
     }
 }

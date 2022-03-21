@@ -14,9 +14,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login', [\App\Http\Controllers\API\AuthController::class, "login"]);
+Route::post('login', [\App\Http\Controllers\API\AuthController::class, "login"])
+    ->middleware('guest:aoi');
 
+// Users API Routes
+Route::group(["prefix" => "users", "as" => ".users", "middleware" => ["auth:api", "adminOnly"]], function () {
+    Route::get('/', [\App\Http\Controllers\API\UserController::class, "index"])
+        ->name("index");
 
+    Route::post('/store', [\App\Http\Controllers\API\UserController::class, "store"])
+        ->name("store");
+
+    Route::delete('/{table}/delete', [\App\Http\Controllers\API\UserController::class, "destroy"])
+        ->name("delete");
+});
+
+// Tables API Routes
 Route::group(["prefix" => "tables", "as" => ".tables", "middleware" => ["auth:api", "adminOnly"]], function () {
     Route::get('/', [\App\Http\Controllers\API\TableController::class, "index"])
         ->name("index");
@@ -26,8 +39,4 @@ Route::group(["prefix" => "tables", "as" => ".tables", "middleware" => ["auth:ap
 
     Route::delete('/{table}/delete', [\App\Http\Controllers\API\TableController::class, "destroy"])
         ->name("delete");
-});
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
 });

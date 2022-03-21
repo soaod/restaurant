@@ -42,6 +42,15 @@ class BaseRepository implements EloquentRepositoryContract
 
     /**
      * @param int $length
+     * @return mixed
+     */
+    public function pagination(int $length = 10): mixed
+    {
+        return $this->model->paginate($length);
+    }
+
+    /**
+     * @param int $length
      * @param string $pageName
      * @param int $pageNumber
      * @param array $conditions
