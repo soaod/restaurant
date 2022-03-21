@@ -42,11 +42,17 @@ class BaseRepository implements EloquentRepositoryContract
 
     /**
      * @param int $length
+     * @param array $conditions
      * @return mixed
      */
-    public function pagination(int $length = 10): mixed
+    public function pagination(int $length = 10, array $conditions = []): mixed
     {
-        return $this->model->paginate($length);
+        if ( empty($conditions) ) {
+            return $this->model->paginate($length);
+        }
+        return $this->model
+            ->where($conditions)
+            ->paginate($length);
     }
 
     /**

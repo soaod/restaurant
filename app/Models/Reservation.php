@@ -10,6 +10,10 @@ class Reservation extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'date' => 'date',
+    ];
+
     protected $guarded = [];
 
     public function customer(): BelongsTo

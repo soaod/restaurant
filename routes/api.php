@@ -40,3 +40,20 @@ Route::group(["prefix" => "tables", "as" => ".tables", "middleware" => ["auth:ap
     Route::delete('/{table}/delete', [\App\Http\Controllers\API\TableController::class, "destroy"])
         ->name("delete");
 });
+
+// Reservations API Routes
+Route::group(["prefix" => "reservations", "as" => ".reservations", "middleware" => ["auth:api"]], function () {
+    Route::get('/', [\App\Http\Controllers\API\ReservationController::class, "index"])
+        ->middleware("adminOnly")
+        ->name("index");
+
+    Route::get('/today', [\App\Http\Controllers\API\ReservationController::class, "today"])
+        ->middleware("adminOnly")
+        ->name("today");
+
+    Route::post('/store', [\App\Http\Controllers\API\UserController::class, "store"])
+        ->name("store");
+
+    Route::delete('/{table}/delete', [\App\Http\Controllers\API\UserController::class, "destroy"])
+        ->name("delete");
+});
