@@ -7,12 +7,14 @@
 A restaurant application that helps managing the reservations and querying the available tables ing the restaurant.    
 
 ## Application Features ✨ 🤩
-- Authentication
-- Managing Users (Create, Delete, View All)
-- Retrieving All Reservations For A Specific Day Or In General
-- Managing Reservations (Create, Delete, View All)
-- Managing Restaurant Tables (Create, Delete, View All)
-- Controlling The Opening And Closing Times For the Restaurant
+- Authentication Using <code>JWT</code>.
+- Managing Users (Create, Delete, View All).
+- Retrieving All Reservations For A Specific Day Or In General.
+- Managing Reservations (Create, Delete, View All).
+- Managing Restaurant Tables (Create, Delete, View All).
+- Controlling The Opening And Closing Times For the Restaurant.
+- Uses <code>Redis</code> As Caching Database To Help With The Performance.
+- Uses <code>Postgress</code> As Backend Database.
 
 ## Database Tables 🗃
 - Users Table
