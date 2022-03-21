@@ -51,9 +51,9 @@ Route::group(["prefix" => "reservations", "as" => ".reservations", "middleware" 
         ->middleware("adminOnly")
         ->name("today");
 
-    Route::post('/store', [\App\Http\Controllers\API\UserController::class, "store"])
-        ->name("store");
-
-    Route::delete('/{table}/delete', [\App\Http\Controllers\API\UserController::class, "destroy"])
+    Route::delete('/{reservations}/delete', [\App\Http\Controllers\API\ReservationController::class, "destroy"])
         ->name("delete");
+
+    Route::post('/store', [\App\Http\Controllers\API\ReservationController::class, "store"])
+        ->name("store");
 });

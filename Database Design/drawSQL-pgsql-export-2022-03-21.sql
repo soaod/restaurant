@@ -74,9 +74,9 @@ ALTER TABLE
 ALTER TABLE
     "reservations" ADD CONSTRAINT "reservations_customer_id_foreign" FOREIGN KEY("customer_id") REFERENCES "customers"("id");
 ALTER TABLE
-    "reservations" ADD CONSTRAINT "reservations_table_id_foreign" FOREIGN KEY("table_id") REFERENCES "table_types"("id");
-ALTER TABLE
     "tables" ADD CONSTRAINT "tables_table_type_id_foreign" FOREIGN KEY("table_type_id") REFERENCES "table_types"("id");
+ALTER TABLE
+    "reservations" ADD CONSTRAINT "reservations_table_id_foreign" FOREIGN KEY("table_id") REFERENCES "tables"("id");
 ALTER TABLE
     "reservations" ADD CONSTRAINT "reservations_user_id_foreign" FOREIGN KEY("user_id") REFERENCES "users"("id");
 ALTER TABLE
