@@ -1,58 +1,64 @@
 <p align="center"><a href="https://laravel.com" target="_blank">
-<img src="https://f.top4top.io/p_2271trx9x1.png" width="400"></a></p>
+<div class="" style="background-image: url('https://g.top4top.io/p_2271zbiqx1.png'); height: 200px; background-repeat: no-repeat; background-size: contain; background-position: center;">
+</div>
 
-## About The Project
+## About The Project 🤔 ℹ️
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+A restaurant application that helps managing the reservations and querying the available tables ing the restaurant.    
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Application Features ✨ 🤩
+- Authentication
+- Managing Users (Create, Delete, View All)
+- Retrieving All Reservations For A Specific Day Or In General
+- Managing Reservations (Create, Delete, View All)
+- Managing Restaurant Tables (Create, Delete, View All)
+- Controlling The Opening And Closing Times For the Restaurant
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Database Tables 🗃
+- Users Table
+    - Contains all information related to the users|employees of the restaurant.
+- Roles Table
+    - Contains all information related to the users|employees roles there are only to [Admin, Employee].
+- Table Types
+    - Contains all information related to the table types that are existed in the restaurant.
+- Tables Table
+  - Contains all brief information related to the tables that are existed in the restaurant.
+- Customers Table
+  - Contains all brief information related to the customers.
+- Reservations Table
+    - Contains all information related to the reservations.
 
-## Learning Laravel
+## Database ERD & Relationships 🖇
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<div style="height: 400px; width: 100%; background-size: 100%; background-image: url('https://github.com/soaod/restaurant/blob/master/Database%20Design/drawSQL-export-2022-03-21_23_47.png?raw=true');"></div>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Set up And Start Using The Application 🚀
+<mark>
+    Make Sure You Have Composer And NPM Installed In Your System.
+</mark>
+<h4>
+    After cloning the repo, You need to run these commands:
+</h4>
+<ol>
+    <li>
+        <code>npm install</code>
+    </li>
+    <li>
+        <code>composer install</code>
+    </li>
+</ol>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+<h4>
+You also can use Docker to start using this application By running this command
+</h4>
+<mark>
+    Make Sure You Have Docker Installed In Your System.
+</mark>
+<br>
+<code>
+    docker-compose up --force-recreate --build -d
+</code>
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## API Collection Are Available Using Insomnia
+- You can import the collection to start testing the api
